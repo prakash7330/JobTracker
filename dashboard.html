@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0d1117"
+    >
+
+    <title>JobTracker — Career Command Center</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================= -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-inner">
+
+
+            <!-- BRAND -->
+
+            <div class="sidebar-brand brand">
+
+                <div class="brand-mark">
+                    JT
+                </div>
+
+                <div class="brand-text brand-copy">
+
+                    <strong class="brand-name">
+                        JobTracker
+                    </strong>
+
+                    <span class="brand-tagline">
+                        Career Command Center
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav
+                class="main-navigation main-nav"
+                aria-label="Main navigation"
+            >
+
+                <button
+                    type="button"
+                    class="nav-item active"
+                    data-view="dashboardView"
+                >
+
+                    <span class="nav-icon">
+                        ⌂
+                    </span>
+
+                    <span class="nav-label">
+                        Dashboard
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-view="applicationsView"
+                >
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span class="nav-label">
+                        Applications
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-view="interviewsView"
+                >
+
+                    <span class="nav-icon">
+                        ◷
+                    </span>
+
+                    <span class="nav-label">
+                        Interviews
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-view="followupsView"
+                >
+
+                    <span class="nav-icon">
+                        ✓
+                    </span>
+
+                    <span class="nav-label">
+                        Follow-ups
+                    </span>
+
+                    <span
+                        class="nav-count"
+                        id="navFollowupCount"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-view="analyticsView"
+                >
+
+                    <span class="nav-icon">
+                        ◒
+                    </span>
+
+                    <span class="nav-label">
+                        Analytics
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-bottom sidebar-footer">
+
+                <div class="sidebar-user">
+
+                    <div
+                        class="user-avatar"
+                        id="sidebarUserAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="sidebar-user-info">
+
+                        <div
+                            class="sidebar-user-name"
+                            id="sidebarUserName"
+                        >
+                            User
+                        </div>
+
+                        <div
+                            class="sidebar-user-email"
+                            id="sidebarUserEmail"
+                        >
+                            user@example.com
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="nav-item nav-logout sidebar-logout"
+                    id="logoutBtn"
+                >
+
+                    <span>
+
+                        <span class="nav-icon">
+                            ⇥
+                        </span>
+
+                        <span class="nav-label">
+                            Sign out
+                        </span>
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ============================================================
+         MAIN AREA
+    ============================================================= -->
+
+    <main class="main-area main-content">
+
+
+        <!-- ========================================================
+             TOP HEADER
+        ========================================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="breadcrumb">
+
+                    <span>
+                        JobTracker
+                    </span>
+
+                    <span class="breadcrumb-separator">
+                        /
+                    </span>
+
+                    <strong id="pageTitle">
+                        Dashboard
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions top-header-right">
+
+
+                <button
+                    type="button"
+                    class="button button-primary"
+                    id="headerNewApplicationBtn"
+                >
+                    + New Application
+                </button>
+
+
+                <div class="user-menu header-profile">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+                    <div class="user-details header-profile-copy">
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <small id="userEmail">
+                            user@example.com
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ========================================================
+             PAGE CONTENT
+        ========================================================= -->
+
+        <section class="page-content view-container">
+
+
+            <!-- ====================================================
+                 DASHBOARD VIEW
+            ===================================================== -->
+
+            <section
+                id="dashboardView"
+                class="page-view active-view"
+            >
+
+
+                <!-- WELCOME -->
+
+                <div class="welcome-section view-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            OVERVIEW
+                        </p>
+
+                        <h1>
+                            Welcome back,
+                            <span id="welcomeName">
+                                User
+                            </span>
+                        </h1>
+
+                        <p class="page-subtitle">
+                            Keep your job search organized,
+                            measurable and moving forward.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="dashboardNewApplicationBtn"
+                    >
+                        + New Application
+                    </button>
+
+                </div>
+
+
+
+                <!-- KPI GRID -->
+
+                <div class="kpi-grid">
+
+
+                    <article class="kpi-card">
+
+                        <div class="kpi-card-top">
+
+                            <span class="kpi-label">
+                                Total Applications
+                            </span>
+
+                            <span class="kpi-icon neutral">
+                                ▣
+                            </span>
+
+                        </div>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashboardTotalApplications"
+                        >
+                            0
+                        </strong>
+
+                        <p class="kpi-description">
+                            All tracked applications
+                        </p>
+
+                    </article>
+
+
+                    <article class="kpi-card">
+
+                        <div class="kpi-card-top">
+
+                            <span class="kpi-label">
+                                Interviews
+                            </span>
+
+                            <span class="kpi-icon blue">
+                                ◷
+                            </span>
+
+                        </div>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashboardInterviewCount"
+                        >
+                            0
+                        </strong>
+
+                        <p class="kpi-description">
+                            Scheduled interviews
+                        </p>
+
+                    </article>
+
+
+                    <article class="kpi-card">
+
+                        <div class="kpi-card-top">
+
+                            <span class="kpi-label">
+                                Offers
+                            </span>
+
+                            <span class="kpi-icon green">
+                                ★
+                            </span>
+
+                        </div>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashboardOfferCount"
+                        >
+                            0
+                        </strong>
+
+                        <p class="kpi-description">
+                            Offers received
+                        </p>
+
+                    </article>
+
+
+                    <article class="kpi-card">
+
+                        <div class="kpi-card-top">
+
+                            <span class="kpi-label">
+                                Follow-ups
+                            </span>
+
+                            <span class="kpi-icon yellow">
+                                !
+                            </span>
+
+                        </div>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashboardFollowupCount"
+                        >
+                            0
+                        </strong>
+
+                        <p class="kpi-description">
+                            Need your attention
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- DASHBOARD TWO COLUMN -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- UPCOMING INTERVIEWS -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    INTERVIEW MANAGEMENT
+                                </p>
+
+                                <h2>
+                                    Upcoming Interviews
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="text-button"
+                                data-view-jump="interviewsView"
+                            >
+                                View all
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboardUpcomingInterviews"
+                            class="panel-list"
+                        >
+
+                            <div class="empty-inline">
+                                No upcoming interviews.
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FOLLOW UPS -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    FOLLOW-UP MANAGEMENT
+                                </p>
+
+                                <h2>
+                                    Pending Follow-ups
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="text-button"
+                                data-view-jump="followupsView"
+                            >
+                                View all
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboardFollowups"
+                            class="panel-list"
+                        >
+
+                            <div class="empty-inline">
+                                No pending follow-ups.
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- RECENT APPLICATIONS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                APPLICATION PIPELINE
+                            </p>
+
+                            <h2>
+                                Recent Applications
+                            </h2>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="text-button"
+                            data-view-jump="applicationsView"
+                        >
+                            View applications
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="dashboardRecentApplications"
+                        class="recent-applications"
+                    >
+
+                        <div class="empty-inline">
+                            No applications yet.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 APPLICATIONS VIEW
+            ===================================================== -->
+
+            <section
+                id="applicationsView"
+                class="page-view"
+            >
+
+
+                <div class="view-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            APPLICATION MANAGEMENT
+                        </p>
+
+                        <h1>
+                            Applications
+                        </h1>
+
+                        <p class="page-subtitle">
+                            Track every application from submission
+                            to offer.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="applicationsNewBtn"
+                    >
+                        + New Application
+                    </button>
+
+                </div>
+
+
+
+                <!-- FILTERS -->
+
+                <article class="panel filters-panel">
+
+                    <div class="filters-grid">
+
+
+                        <div class="field">
+
+                            <label for="searchInput">
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="searchInput"
+                                placeholder="Company, role or notes..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="statusFilter">
+                                Status
+                            </label>
+
+                            <select id="statusFilter">
+
+                                <option value="ALL">
+                                    All statuses
+                                </option>
+
+                                <option value="APPLIED">
+                                    Applied
+                                </option>
+
+                                <option value="SCREENING">
+                                    Screening
+                                </option>
+
+                                <option value="INTERVIEW_1">
+                                    Interview 1
+                                </option>
+
+                                <option value="INTERVIEW_2">
+                                    Interview 2
+                                </option>
+
+                                <option value="OFFER">
+                                    Offer
+                                </option>
+
+                                <option value="REJECTED">
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="sourceFilter">
+                                Source
+                            </label>
+
+                            <select id="sourceFilter">
+
+                                <option value="ALL">
+                                    All sources
+                                </option>
+
+                                <option value="LINKEDIN">
+                                    LinkedIn
+                                </option>
+
+                                <option value="NAUKRI">
+                                    Naukri
+                                </option>
+
+                                <option value="REFERRAL">
+                                    Referral
+                                </option>
+
+                                <option value="DIRECT">
+                                    Direct
+                                </option>
+
+                                <option value="OTHER">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="sortFilter">
+                                Sort
+                            </label>
+
+                            <select id="sortFilter">
+
+                                <option value="DATE_DESC">
+                                    Newest first
+                                </option>
+
+                                <option value="DATE_ASC">
+                                    Oldest first
+                                </option>
+
+                                <option value="COMPANY_ASC">
+                                    Company A–Z
+                                </option>
+
+                                <option value="COMPANY_DESC">
+                                    Company Z–A
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="filter-actions">
+
+                        <button
+                            type="button"
+                            class="button button-secondary"
+                            id="clearFiltersBtn"
+                        >
+                            Clear filters
+                        </button>
+
+                        <button
+                            type="button"
+                            class="button button-secondary"
+                            id="staleBtn"
+                        >
+                            Follow-ups only
+                        </button>
+
+                        <button
+                            type="button"
+                            class="button button-secondary"
+                            id="checkBtn"
+                        >
+                            ↻ Check follow-ups
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- RESULTS HEADER -->
+
+                <div class="results-header">
+
+                    <span id="resultsCount">
+                        0 applications
+                    </span>
+
+                </div>
+
+
+
+                <!-- APPLICATION TABLE -->
+
+                <article class="panel table-panel">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Company
+                                    </th>
+
+                                    <th>
+                                        Role
+                                    </th>
+
+                                    <th>
+                                        Source
+                                    </th>
+
+                                    <th>
+                                        Applied
+                                    </th>
+
+                                    <th>
+                                        Resume
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Notes
+                                    </th>
+
+                                    <th>
+                                        Follow-up
+                                    </th>
+
+                                    <th>
+                                        History
+                                    </th>
+
+                                    <th>
+                                        Edit
+                                    </th>
+
+                                    <th>
+                                        Delete
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div
+                        id="emptyState"
+                        class="empty-state"
+                    >
+
+                        <div class="empty-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            No applications found
+                        </h3>
+
+                        <p>
+                            Start tracking your job search
+                            by adding your first application.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="button button-primary"
+                            id="emptyNewApplicationBtn"
+                        >
+                            + Add Application
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- MOBILE APPLICATIONS -->
+
+                <div
+                    id="mobileApplications"
+                    class="mobile-applications"
+                >
+                </div>
+
+
+                <div
+                    id="mobileEmptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        ▣
+                    </div>
+
+                    <h3>
+                        No applications found
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="mobileEmptyNewApplicationBtn"
+                    >
+                        + Add Application
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 INTERVIEWS VIEW
+            ===================================================== -->
+
+            <section
+                id="interviewsView"
+                class="page-view"
+            >
+
+
+                <div class="view-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            INTERVIEW MANAGEMENT
+                        </p>
+
+                        <h1>
+                            Interviews
+                        </h1>
+
+                        <p class="page-subtitle">
+                            Keep interview dates, links,
+                            recruiter details and notes in one place.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="newInterviewBtn"
+                    >
+                        + Add Interview
+                    </button>
+
+                </div>
+
+
+
+                <!-- UPCOMING INTERVIEWS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                SCHEDULE
+                            </p>
+
+                            <h2>
+                                Upcoming Interviews
+                            </h2>
+
+                        </div>
+
+                        <span
+                            class="panel-count"
+                            id="upcomingInterviewCount"
+                        >
+                            0 upcoming
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="upcomingInterviews"
+                        class="interview-list panel-list"
+                    >
+
+                        <div class="empty-inline">
+                            No upcoming interviews.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PENDING INTERVIEW FOLLOW UPS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                FOLLOW-UP MANAGEMENT
+                            </p>
+
+                            <h2>
+                                Pending Interview Follow-ups
+                            </h2>
+
+                        </div>
+
+                        <span
+                            class="panel-count"
+                            id="pendingFollowupCount"
+                        >
+                            0 pending
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="pendingInterviewFollowups"
+                        class="panel-list"
+                    >
+
+                        <div class="empty-inline">
+                            No pending interview follow-ups.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 FOLLOW UPS VIEW
+            ===================================================== -->
+
+            <section
+                id="followupsView"
+                class="page-view"
+            >
+
+
+                <div class="view-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            FOLLOW-UP MANAGEMENT
+                        </p>
+
+                        <h1>
+                            Follow-ups
+                        </h1>
+
+                        <p class="page-subtitle">
+                            Stay on top of applications and
+                            interview follow-ups.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button button-secondary"
+                        id="followupRefreshBtn"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+
+                <!-- APPLICATION FOLLOW UPS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                APPLICATIONS
+                            </p>
+
+                            <h2>
+                                Application Follow-ups
+                            </h2>
+
+                        </div>
+
+                        <span
+                            class="panel-count"
+                            id="applicationFollowupCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="applicationFollowups"
+                        class="panel-list"
+                    >
+
+                        <div class="empty-inline">
+                            No application follow-ups.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- INTERVIEW FOLLOW UPS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                INTERVIEWS
+                            </p>
+
+                            <h2>
+                                Interview Follow-ups
+                            </h2>
+
+                        </div>
+
+                        <span
+                            class="panel-count"
+                            id="interviewFollowupCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="followupInterviewList"
+                        class="panel-list"
+                    >
+
+                        <div class="empty-inline">
+                            No interview follow-ups.
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 ANALYTICS VIEW
+            ===================================================== -->
+
+            <section
+                id="analyticsView"
+                class="page-view"
+            >
+
+
+                <div class="view-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PERFORMANCE
+                        </p>
+
+                        <h1>
+                            Analytics
+                        </h1>
+
+                        <p class="page-subtitle">
+                            Understand your job search pipeline
+                            and conversion rates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ANALYTICS METRICS -->
+
+                <div class="analytics-metrics">
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            Success Rate
+                        </span>
+
+                        <strong id="metricSuccessRate">
+                            0.0%
+                        </strong>
+
+                        <small id="metricSuccessDetail">
+                            0 of 0 applications
+                        </small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            Interview Conversion
+                        </span>
+
+                        <strong id="metricInterviewConversion">
+                            0.0%
+                        </strong>
+
+                        <small id="metricInterviewDetail">
+                            0 of 0 applications
+                        </small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            Offer Conversion
+                        </span>
+
+                        <strong id="metricOfferConversion">
+                            0.0%
+                        </strong>
+
+                        <small id="metricOfferDetail">
+                            0 of 0 applications
+                        </small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            Response Rate
+                        </span>
+
+                        <strong id="metricResponseRate">
+                            0.0%
+                        </strong>
+
+                        <small id="metricResponseDetail">
+                            0 of 0 responded
+                        </small>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- ANALYTICS CHARTS -->
+
+                <div class="analytics-grid">
+
+
+                    <article class="panel chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    PIPELINE
+                                </p>
+
+                                <h2>
+                                    Application Status
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="statusChart"
+                            ></canvas>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="panel chart-panel">
+
+                        <div class="panel-header">
+
+    <div>
+
+        <p class="eyebrow">
+            ACTIVITY
+        </p>
+
+        <h2>
+            Applications Over Time
+        </h2>
+
+    </div>
+
+
+    <select
+        id="applicationsTrendRange"
+        class="analytics-range-select"
+        aria-label="Application trend range"
+    >
+
+        <option value="daily">
+            Daily
+        </option>
+
+        <option value="monthly">
+            Monthly
+        </option>
+
+        <option value="6months">
+            Last 6 Months
+        </option>
+
+        <option value="1year">
+            Last 1 Year
+        </option>
+
+    </select>
+
+</div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="applicationsTrendChart"
+                            ></canvas>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- SOURCE ANALYTICS -->
+
+                <div class="analytics-grid">
+
+
+                    <article class="panel chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    SOURCES
+                                </p>
+
+                                <h2>
+                                    Applications by Source
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="sourceChart"
+                            ></canvas>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    TOP SOURCE
+                                </p>
+
+                                <h2>
+                                    Best Performing Source
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="top-source">
+
+                            <strong id="topSourceName">
+                                No data
+                            </strong>
+
+                            <span id="topSourceCount">
+                                0 applications
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="sourceAnalyticsList"
+                            class="source-list"
+                        >
+
+                            <div class="empty-inline">
+                                No source data yet.
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ============================================================
+     ADD / EDIT APPLICATION MODAL
+============================================================= -->
+
+<div
+    id="modalOverlay"
+    class="modal-overlay"
+    style="display:none"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    APPLICATION
+                </p>
+
+                <h2 id="modalTitle">
+                    Add Application
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="icon-button"
+                id="modalCloseBtn"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="addForm">
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label for="companyInput">
+                        Company *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="companyInput"
+                        required
+                        autocomplete="organization"
+                        placeholder="e.g. Deloitte"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="roleInput">
+                        Role *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="roleInput"
+                        required
+                        placeholder="e.g. Software Engineer"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="sourceInput">
+                        Source
+                    </label>
+
+                    <select id="sourceInput">
+
+                        <option value="LINKEDIN">
+                            LinkedIn
+                        </option>
+
+                        <option value="NAUKRI">
+                            Naukri
+                        </option>
+
+                        <option value="REFERRAL">
+                            Referral
+                        </option>
+
+                        <option value="DIRECT">
+                            Direct
+                        </option>
+
+                        <option value="OTHER">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="resumeInput">
+                        Resume Version
+                    </label>
+
+                    <input
+                        type="text"
+                        id="resumeInput"
+                        placeholder="e.g. Resume v3"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="dateInput">
+                        Applied Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dateInput"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Initial Status
+                    </label>
+
+                    <input
+                        type="text"
+                        value="Applied"
+                        disabled
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label for="notesInput">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notesInput"
+                        rows="5"
+                        placeholder="Add useful notes about this application..."
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <p
+                id="modalError"
+                class="error-msg"
+            ></p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    id="cancelBtn"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Save Application
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================================
+     NOTES MODAL
+============================================================= -->
+
+<div
+    id="notesModalOverlay"
+    class="modal-overlay"
+    style="display:none"
+>
+
+    <div
+        class="modal small-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="notesModalTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    APPLICATION NOTES
+                </p>
+
+                <h2 id="notesModalTitle">
+                    Notes
+                </h2>
+
+                <p
+                    id="notesModalRole"
+                    class="page-subtitle"
+                ></p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="icon-button"
+                id="closeNotesBtn"
+                aria-label="Close notes"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="notesModalText"
+            class="notes-content"
+        >
+            No notes added.
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="button button-primary"
+                id="notesDoneBtn"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================================
+     STATUS HISTORY MODAL
+============================================================= -->
+
+<div
+    id="historyModalOverlay"
+    class="modal-overlay"
+    style="display:none"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="historyTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    STATUS HISTORY
+                </p>
+
+                <h2 id="historyTitle">
+                    Status History
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="icon-button"
+                id="closeHistoryBtn"
+                aria-label="Close history"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="historyContent"
+            class="history-list"
+        >
+
+            <div class="empty-inline">
+                No status history.
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="button button-primary"
+                id="historyDoneBtn"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================================
+     APPLICATION EDIT MODAL
+============================================================= -->
+
+<div
+    id="editModalOverlay"
+    class="modal-overlay"
+    style="display:none"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="editApplicationTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    APPLICATION
+                </p>
+
+                <h2 id="editApplicationTitle">
+                    Edit Application
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="icon-button"
+                id="editModalCloseBtn"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="editForm">
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label for="editCompanyInput">
+                        Company *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editCompanyInput"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="editRoleInput">
+                        Role *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editRoleInput"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="editSourceInput">
+                        Source
+                    </label>
+
+                    <select id="editSourceInput">
+
+                        <option value="LINKEDIN">
+                            LinkedIn
+                        </option>
+
+                        <option value="NAUKRI">
+                            Naukri
+                        </option>
+
+                        <option value="REFERRAL">
+                            Referral
+                        </option>
+
+                        <option value="DIRECT">
+                            Direct
+                        </option>
+
+                        <option value="OTHER">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="editResumeInput">
+                        Resume Version
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editResumeInput"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="editDateInput">
+                        Applied Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="editDateInput"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label for="editNotesInput">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="editNotesInput"
+                        rows="5"
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <p
+                id="editModalError"
+                class="error-msg"
+            ></p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    id="editCancelBtn"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================================
+     MOBILE NEW APPLICATION BUTTON
+============================================================= -->
+
+<button
+    type="button"
+    class="mobile-floating-action"
+    id="mobileNewApplicationBtn"
+    aria-label="New application"
+>
+    +
+</button>
+
+
+
+<!-- ============================================================
+     TOAST CONTAINER
+============================================================= -->
+
+<div
+    id="toastContainer"
+    class="toast-container"
+    aria-live="polite"
+    aria-atomic="true"
+></div>
+
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================= -->
+
+<script
+    src="dashboard.js"
+></script>
+
+
+</body>
+
+</html>

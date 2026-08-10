@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #14181C;
+  font-family: 'Inter', sans-serif;
+  color: #E8E6E1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.boarding-pass {
+  width: 100%;
+  max-width: 460px;
+  background: #1B2127;
+  border: 1px solid #2A3038;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.bp-header {
+  background: #F2A93B;
+  color: #14181C;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.bp-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.bp-flight {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.bp-body {
+  padding: 32px 28px 24px;
+}
+
+.bp-body h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.bp-sub {
+  font-size: 14px;
+  color: #8A93A0;
+  margin-bottom: 24px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.5px;
+  color: #8A93A0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #14181C;
+  border: 1px solid #2A3038;
+  border-radius: 3px;
+  color: #E8E6E1;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus {
+  border-color: #F2A93B;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: #F2A93B;
+  color: #14181C;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: #FFC266;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.switch-mode {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #8A93A0;
+}
+
+.switch-mode a {
+  color: #3E8F8B;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.switch-mode a:hover {
+  text-decoration: underline;
+}
+
+.error-msg {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #B5544B;
+  text-align: center;
+  min-height: 16px;
+}
+
+.bp-perforation {
+  position: relative;
+  height: 1px;
+  border-top: 2px dashed #2A3038;
+  margin: 0 0;
+}
+
+.bp-perforation::before,
+.bp-perforation::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background: #14181C;
+  border-radius: 50%;
+}
+
+.bp-perforation::before { left: -10px; }
+.bp-perforation::after { right: -10px; }
+
+.bp-stub {
+  background: #171C21;
+  padding: 16px 28px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.stub-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stub-row span {
+  font-size: 10px;
+  color: #5A6470;
+  letter-spacing: 1px;
+}
+
+.stub-row strong {
+  font-size: 13px;
+  color: #F2A93B;
+}
+.forgot-password {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.forgot-password a {
+  color: #F2A93B;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.forgot-message {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+}
