@@ -9,7 +9,7 @@
    CONFIGURATION
    ============================================================ */
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://jobtracker-backend-47ef.onrender.com/api";
 const LOGIN_PAGE = "index.html";
 
 const token = localStorage.getItem("jwt_token");
