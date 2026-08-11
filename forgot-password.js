@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://jobtracker-backend-47ef.onrender.com/api";
 
 const form = document.getElementById("forgotForm");
 const emailInput = document.getElementById("emailInput");
