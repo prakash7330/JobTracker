@@ -1,27 +1,27 @@
 # JobTracker
 
-A full-stack job application tracking system that helps users organize job applications, track application status, manage interviews, and follow up on applications that have been inactive for a defined period.
+## Job Application Tracking System
 
-## 🌐 Live Application
+JobTracker is a full-stack web application designed to help job seekers organize and manage their job search in one place.
 
-**Frontend:**  
-https://jobtracker-frontend-g2tv.onrender.com
-
-**Backend API:**  
-https://jobtracker-backend-47ef.onrender.com
-
-**GitHub Repository:**  
-https://github.com/prakash7330/JobTracker
+It allows users to track job applications, monitor application statuses, manage interviews, set follow-ups, and understand their job search performance through analytics.
 
 ---
 
 ## 📌 Overview
 
-JobTracker is a full-stack web application designed to make the job search process easier to manage.
+Managing multiple job applications can become difficult when application details, interview dates, recruiter information, and follow-ups are stored in different places.
 
-Instead of maintaining job applications in spreadsheets or notes, users can store their applications in one place and track their progress from application to interview and offer.
+JobTracker provides a centralized platform where users can:
 
-The application supports authentication, application management, interview tracking, follow-up reminders, and password recovery.
+- Track job applications
+- Manage application statuses
+- Store resume information
+- Record interview details
+- Manage application and interview follow-ups
+- View job search analytics
+- Monitor application progress
+- Keep important job-search information organized
 
 ---
 
@@ -31,141 +31,132 @@ The application supports authentication, application management, interview track
 
 - User registration
 - User login
-- JWT-based authentication
-- Secure password hashing using BCrypt
-- Logout functionality
-- Protected API endpoints
+- Secure authentication
 - Forgot password functionality
-- Reset password functionality
+- Password reset functionality
+- User-specific application data
 
-### 💼 Job Application Management
+### 📋 Application Management
 
 Users can create and manage job applications with information such as:
 
 - Company name
 - Job role
 - Application source
-- Resume version
-- Application status
-- Applied date
+- Application date
+- Resume used
+- Current application status
 - Notes
-- Last updated date
+- Follow-up information
+- Application history
 
-Supported application sources include:
-
-- LinkedIn
-- Referral
-- Direct application
-- Other sources
-
-### 📊 Application Status Tracking
-
-Applications can be tracked through different stages of the hiring process.
-
-Examples include:
+Supported application statuses include:
 
 - Applied
 - Screening
-- Interview
+- Interview 1
+- Interview 2
 - Offer
 - Rejected
 
-This allows users to understand the current stage of every application.
+### 📅 Interview Management
 
-### 🎯 Interview Tracking
-
-Users can add interview information for an application, including:
+Users can manage upcoming interviews and store:
 
 - Company
-- Role
+- Job role
 - Interview date
 - Interview time
-- Interview round
 - Interview type
 - Meeting link
-- Contact name
-- Contact email
-- Interview notes
+- Recruiter details
 - Follow-up date
-- Follow-up status
 
-### 🔔 Follow-Up Tracking
+### 🔔 Follow-up Management
 
-The application includes automatic follow-up detection.
+JobTracker helps users remember important follow-ups related to:
 
-Applications that have not been updated for a defined period can be marked as needing follow-up.
+- Job applications
+- Interviews
+- Recruiters
 
-The backend uses Spring Scheduling to periodically check applications.
+Users can view pending follow-ups and mark completed follow-ups.
 
-Final application statuses such as:
+### 📊 Analytics Dashboard
 
-- Offer
-- Rejected
+The analytics section provides an overview of the job search pipeline, including:
 
-are excluded from automatic follow-up detection.
-
-### 📧 Password Recovery
-
-Users can request a password reset through email.
-
-The application uses Gmail SMTP for sending password recovery emails.
-
-### 🗄️ Database Persistence
-
-Application data is stored in a relational database.
-
-For production, the backend uses:
-
-- PostgreSQL
-- Supabase
-
-For local development, the application can use:
-
-- MySQL
+- Success rate
+- Interview conversion rate
+- Offer conversion rate
+- Response rate
+- Application status distribution
+- Applications over time
 
 ---
 
-# 🛠️ Tech Stack
+# 🖥️ Application Screenshots
 
-## Frontend
+## 🔐 Login
 
-- HTML
-- CSS
-- JavaScript
-- Chart.js
-- Google Fonts
+The login page allows users to securely access their JobTracker account.
 
-## Backend
+![JobTracker Login](assests/login.png)
 
-- Java 17
-- Spring Boot
-- Spring MVC
-- Spring Data JPA
-- Spring Security
-- Hibernate
-- JWT
-- Maven
+---
 
-## Database
+## 📊 Dashboard
 
-### Production
+The dashboard provides a quick overview of the user's job search activity, including applications, interviews, offers, and pending follow-ups.
 
-- PostgreSQL
-- Supabase
+![JobTracker Dashboard](assests/dashboard-overview.png)
 
-### Local Development
+---
 
-- MySQL
+## 📋 Dashboard - Recent Applications
 
-## Email
+The dashboard also provides a quick view of recently tracked job applications and their current statuses.
 
-- Gmail SMTP
+![JobTracker Recent Applications](assests/dashboard-applications.png)
 
-## Deployment
+---
 
-- GitHub
-- Render
-- Docker
+## 🗂️ Applications
+
+The Applications page allows users to manage and filter their complete job application pipeline.
+
+Users can search applications and filter them by:
+
+- Status
+- Source
+- Follow-ups
+- Application date
+
+![JobTracker Applications](assests/applications.png)
+
+---
+
+## 📅 Interviews
+
+The Interviews section allows users to manage upcoming interviews and keep important interview information in one place.
+
+![JobTracker Interviews](assests/interviews.png)
+
+---
+
+## 🔔 Follow-ups
+
+The Follow-ups section helps users keep track of pending application and interview follow-ups.
+
+![JobTracker Follow-ups](assests/follow-ups.png)
+
+---
+
+## 📈 Analytics
+
+The Analytics dashboard provides insights into the overall job search pipeline and conversion rates.
+
+![JobTracker Analytics](assests/analytics.png)
 
 ---
 
